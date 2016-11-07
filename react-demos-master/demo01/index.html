@@ -13,5 +13,21 @@
         document.getElementById('example')
       );
     </script>
+
+
+    <div id="jyexp"></div>
+    <script type="text/babel">
+      var arrAnimal = ['小猪','小猫咪'];      
+      ReactDOM.render(
+        <div>
+        {
+            arrAnimal.map(function (item){
+              return <div>{item},</div>;
+            })
+        }
+        </div>,
+        document.getElementById('jyexp')
+      );
+    </script>
   </body>
 </html>
