@@ -1,6 +1,10 @@
 import React,{ Component } from 'react'
 import Clock from "./Clock";
 import PropTypes from 'prop-types'
+<<<<<<< HEAD
+=======
+
+>>>>>>> 55b9d82d0060dd94a5b5f7435fe8b1dd69e7b1d2
 
 class Time extends Component{
     static propTypes = {
