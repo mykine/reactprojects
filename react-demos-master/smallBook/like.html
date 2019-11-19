@@ -5,6 +5,34 @@
     <title>Title</title>
 </head>
 <body>
-
+    <div class="wrapper">
+        <button class="like-btn">
+            <span class="like-text">点赞</span>
+            <span>👍</span>
+        </button>
+    </div>
 </body>
+
+<script type="text/javascript">
+
+    age = 1
+
+
+
+    const button = document.querySelector('.like-btn')
+    const buttonText = button.querySelector('.like-text')
+    let isLiked = false
+    button.addEventListener('click',function(){
+        isLiked = !isLiked
+        if(isLiked){
+            buttonText.innerHTML = '取消'
+        }else{
+            buttonText.innerHTML = '点赞'
+        }
+    },false)
+
+
+
+</script>
+
 </html>
