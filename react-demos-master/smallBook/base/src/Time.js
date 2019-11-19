@@ -2,7 +2,6 @@ import React,{ Component } from 'react'
 import Clock from "./Clock";
 import PropTypes from 'prop-types'
 
-
 class Time extends Component{
     static propTypes = {
         comment: PropTypes.object.isRequired
