@@ -1,5 +1,5 @@
 import React from 'react'
-import { render } from '@testing-library/react'
+import Child from './child';
 export default class Life extends React.Component{
     constructor(props){
         super(props);
@@ -22,12 +22,14 @@ export default class Life extends React.Component{
         })
     }
     render(){
+         let style = {padding:50}
          return (
-         <div>
+         <div style={style}>
             <p> life cycle</p>
             <button onClick={this.handleAdd}>click+1</button>
-            <button onClick={this.handleMinus.bind(this)}>click-1</button>
-            {this.state.count}
+            <button onClick={this.handleMinus.bind(this)}>click-1</button>            
+            <p>{this.state.count}</p>
+            <Child name={this.state.count}></Child>
          </div>
          )
      }
