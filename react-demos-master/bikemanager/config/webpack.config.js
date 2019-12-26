@@ -48,6 +48,10 @@ const cssModuleRegex = /\.module\.css$/;
 const sassRegex = /\.(scss|sass)$/;
 const sassModuleRegex = /\.module\.(scss|sass)$/;
 
+const lessRegex = /\.less$/;
+const lessModuleRegex = /\.module\.less$/;
+
+
 // This is the production and development configuration.
 // It is focused on developer experience, fast rebuilds, and a minimal bundle.
 module.exports = function(webpackEnv) {
@@ -421,48 +425,7 @@ module.exports = function(webpackEnv) {
                 sourceMaps: shouldUseSourceMap,
                 inputSourceMap: shouldUseSourceMap,
               },
-            },
-            {
-              test: /\.less$/,
-              use: [
-                require.resolve('style-loader'),
-                {
-                  loader: require.resolve('css-loader'),
-                  options: {
-                    importLoaders: 1,
-                  },
-                },
-                {
-                  loader: require.resolve('postcss-loader'),
-                  options: {
-                    // Necessary for external CSS imports to work
-                    // https://github.com/facebookincubator/create-react-app/issues/2677
-                    ident: 'postcss',
-                    plugins: () => [
-                      require('postcss-flexbugs-fixes'),
-                      autoprefixer({
-                        browsers: [
-                          '>1%',
-                          'last 4 versions',
-                          'Firefox ESR',
-                          'not ie < 9', // React doesn't support IE8 anyway
-                        ],
-                        flexbox: 'no-2009',
-                      }),
-                    ],
-                  },
-                },
-                {
-                  loader:require.resolve('less-loader'),
-                  options: {
-                    modules: false,
-                    modifyVars: {
-                        "@primary-color": "#f9c700"
-                    }
-                  }
-                }
-              ],
-            },
+            },                   
             // "postcss" loader applies autoprefixer to our CSS.
             // "css" loader resolves paths in CSS and adds assets as dependencies.
             // "style" loader turns CSS into JS modules that inject <style> tags.
@@ -495,6 +458,31 @@ module.exports = function(webpackEnv) {
                 },
               }),
             },
+            // 配置Less
+         {
+          test: lessRegex,
+            exclude: lessModuleRegex,
+            use: getStyleLoaders(
+              {
+                importLoaders: 2,
+                sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment
+              },
+              'less-loader'
+            ),
+            sideEffects: true
+          },
+          {
+            test: lessModuleRegex,
+            use: getStyleLoaders(
+              {
+                importLoaders: 2,
+                sourceMap: isEnvProduction ? shouldUseSourceMap : isEnvDevelopment,
+                modules: true,
+                getLocalIdent: getCSSModuleLocalIdent
+              },
+              'less-loader'
+            )
+          }, 
             // Opt-in support for SASS (using .scss or .sass extensions).
             // By default we support SASS Modules with the
             // extensions .module.scss or .module.sass
