@@ -2,7 +2,7 @@ import React from 'react'
 import Child from './child'
 import {Button} from 'antd'
 import 'antd/dist/antd.css'
-import './index.less'
+// import './index.less'
 export default class Life extends React.Component{
     constructor(props){
         super(props);
