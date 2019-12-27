@@ -21,7 +21,7 @@ export default class Home extends React.Component{
                    </ul>
                    <hr/>
                    <Switch>
-                        <Route  path="/" component={Main} />
+                        <Route exact={true} path="/" component={Main} />
                         <Route path="/about" component={About} />
                         <Route path="/topic" component={Topic} />
                    </Switch>
