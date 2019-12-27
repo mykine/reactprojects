@@ -20,11 +20,14 @@ export default class Home extends React.Component{
                        </li>
                    </ul>
                    <hr/>
+
                    <Switch>
                         <Route exact={true} path="/" component={Main} />
                         <Route path="/about" component={About} />
                         <Route path="/topic" component={Topic} />
                    </Switch>
+
+                   <hr/>
                </div>
            </HashRouter>
         )
