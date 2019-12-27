@@ -1,5 +1,5 @@
 import React from 'react'
-import {HashRouter,Route,Link} from 'react-router-dom'
+import {HashRouter,Route,Link,Switch} from 'react-router-dom'
 import Main from './Main'
 import About from './About'
 import Topic from './Topic'
@@ -20,9 +20,11 @@ export default class Home extends React.Component{
                        </li>
                    </ul>
                    <hr/>
-                   <Route exact={true} path="/" component={Main} />
-                   <Route path="/about" component={About} />
-                   <Route path="/topic" component={Topic} />
+                   <Switch>
+                        <Route  path="/" component={Main} />
+                        <Route path="/about" component={About} />
+                        <Route path="/topic" component={Topic} />
+                   </Switch>
                </div>
            </HashRouter>
         )
