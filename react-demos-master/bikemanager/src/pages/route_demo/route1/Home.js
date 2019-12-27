@@ -20,7 +20,7 @@ export default class Home extends React.Component{
                        </li>
                    </ul>
                    <hr/>
-                   <Route path="/" component={Main} />
+                   <Route exact={true} path="/" component={Main} />
                    <Route path="/about" component={About} />
                    <Route path="/topic" component={Topic} />
                </div>
