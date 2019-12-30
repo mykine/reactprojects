@@ -5,6 +5,7 @@ import About from './../route1/About'
 import Topic from './../route1/Topic'
 import Home from './Home'
 import Info from './Info'
+import NoMatch from './NoMatch'
 
 export default class IRouter extends React.Component{
     render(){
@@ -20,7 +21,7 @@ export default class IRouter extends React.Component{
                         <Route path="/about" component={About}></Route>
                         <Route exact={true} path="/about/abc" component={About}></Route>
                         <Route path="/topics" component={Topic}></Route>
-                        {/* <Route component={NoMatch}></Route> */}
+                        <Route component={NoMatch}></Route>
                     </Switch>
                </Home>
             </Router>
